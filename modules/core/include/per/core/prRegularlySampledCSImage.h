@@ -368,31 +368,14 @@ public:
                         i = (int)v; dv = v-i; unmdv = 1.0-dv;
                         j = (int)u; du = u-j; unmdu = 1.0-du;
                         
-                        if((Mask != NULL))
+                        if((Mask != NULL)) //adapted for non-binary mask (filtered)
                         {
-                            if ((*Mask)[i][j] != 0)
-                            {
-                                *pt_bitmapf += I[i][j]*unmdv*unmdu;
-                                //consider = true;
-                            }
 
-                            if ((*Mask)[i+1][j] != 0)
-                            {
-                                *pt_bitmapf += I[i+1][j]*dv*unmdu;
-                                //consider = true;
-                            }
+                                *pt_bitmapf += I[i][j]*unmdv*unmdu * (*Mask)[i][j]/255;
+                                *pt_bitmapf += I[i+1][j]*dv*unmdu  * (*Mask)[i+1][j]/255;
+                                *pt_bitmapf += I[i][j+1]*unmdv*du  * (*Mask)[i][j+1]/255;
+                                *pt_bitmapf += I[i+1][j+1]*dv*du   * (*Mask)[i+1][j+1]/255;
 
-                            if ((*Mask)[i][j+1] != 0)
-                            {
-                                *pt_bitmapf += I[i][j+1]*unmdv*du;
-                                //consider = true;
-                            }
-
-                            if ((*Mask)[i+1][j+1] != 0)
-                            {
-                                *pt_bitmapf += I[i+1][j+1]*dv*du;
-                                //consider = true;
-                            }
                         }
                         else
                         {

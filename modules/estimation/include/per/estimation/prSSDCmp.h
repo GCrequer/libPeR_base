@@ -63,7 +63,11 @@ public:
         {
 //            std::cout << it_fSet1->toDouble()[0] << std::endl;
 //            std::cout << it_fSet2->toDouble()[0] << std::endl;
+        if (it_fSet1->toDouble()[0] != 0 && it_fSet2->toDouble()[0] != 0){ //TODO : adapt for Mask reading (0 is not a good value, but a true black is rare enough)
             featuresComparison.push_back(*it_fSet1-*it_fSet2);
+        }else{
+            featuresComparison.push_back(0);
+        }
 
 //            std::cout << "nbFeat " << featuresComparison.size() << " / " << fSet1.set.size() << " | " << fSet1.set.size() << std::endl;
         }
