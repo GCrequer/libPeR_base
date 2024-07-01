@@ -1,6 +1,7 @@
 [![Github Releases](https://img.shields.io/github/release/PerceptionRobotique/libPeR_base.svg)](https://github.com/PerceptionRobotique/libPeR_base/releases)
 
 # LibPeR: Perception library for vision-based state estimation of robots and scenes
+Adapted for Mask integration
 
 ## Get started
 
